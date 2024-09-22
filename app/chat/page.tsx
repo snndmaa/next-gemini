@@ -12,7 +12,7 @@ function Chat() {
     setMailBody(e.target.value)
   } 
 
-  const handleButtonClick = async(e) => {
+  const handleButtonClick = async() => {
     const response = await chatWithGemini(`Extract identifying information from this message and return a message asking for confirmation to record it with the info and title listed: ${mailBody}`)
     setParsedData(response)
     setOpenModal(true)
