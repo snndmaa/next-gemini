@@ -2,7 +2,13 @@
 import React from 'react'
 import { Modal, Button } from "flowbite-react";
 
-function TextModal({openModal, setOpenModal, parsedData}) {
+interface TextModalProps {
+  openModal: boolean;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  parsedData: string;
+}
+
+function TextModal({openModal, setOpenModal, parsedData}: TextModalProps) {
   // console.log(parsedData)
   return (
     <>
