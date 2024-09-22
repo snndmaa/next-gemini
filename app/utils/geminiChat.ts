@@ -3,7 +3,6 @@ const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY; // Use Your API_KEY
 
 async function chatWithGemini(prompt: string) {
-    // const prompt = `Generate a resume using this data ${userMessage}. Paraphrase and make the write up more beautiful. Output the resume in html and give it a good ui`;
     try {
         const response = await fetch(`${API_URL}?key=${API_KEY}`, {
             method: 'POST',
@@ -34,8 +33,13 @@ async function chatWithGemini(prompt: string) {
 
         return responseText;
     } catch (error) {
-        console.error('Error:', error.message);
-        throw error;
+        if (error instanceof Error) {
+            console.error('Error:', error.message);
+            throw error;
+        } else {
+            console.error('Unexpected error:', error);
+            throw new Error('An unexpected error occurred');
+        }
     }
 }
 
